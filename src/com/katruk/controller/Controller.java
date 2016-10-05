@@ -3,14 +3,16 @@ package com.katruk.controller;
 import java.io.*;
 
 public class Controller {
+
 	/**
 	 * read from file
 	 * @param path			path to file
 	 * @param encodingText	text Encoding
 	 * @return				text
-	 * @throws java.io.IOException
+	 * @throws java.io.IOException IOExceptio
 	 */
 	public String readFile(String path, EncodingText encodingText) throws IOException {
+
 		InputStreamReader inputStream = new InputStreamReader(new FileInputStream(path), encodingText.name);
 		StringBuilder string = new StringBuilder();
 		int data = inputStream.read();
@@ -30,10 +32,11 @@ public class Controller {
 	 * @param path 			path to file
 	 * @param encodingText	text Encoding
 	 * @param string		text
-	 * @throws java.io.IOException
+	 * @throws java.io.IOException	IOExceptio
 	 */
 	public void writeFile(String path, EncodingText encodingText, String string) throws IOException {
-		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path), encodingText.name));
+		BufferedWriter out = new BufferedWriter(new OutputStreamWriter(
+				new FileOutputStream(path), encodingText.name));
 		out.append(string);
 		out.close();
 	}

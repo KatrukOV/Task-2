@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * This class is using pattern FLYWEIGHT for the creating words and marks
  */
-public class FlyweightSymbol {
+class FlyweightSymbol {
 
 	/**
 	 * private instance of class
@@ -46,7 +46,7 @@ public class FlyweightSymbol {
 		if(cacheSymbol.containsKey(input)){
 			return cacheSymbol.get(input);
 		} else {
-			Symbol symbol = (Symbol) Factory.Instance().create(TypeData.SYMBOL);
+			Symbol symbol = (Symbol) Factory.getInstance().create(TypeData.SYMBOL);
 			symbol.setSymbol(input);
 			cacheSymbol.put(input, symbol);
 			return symbol;

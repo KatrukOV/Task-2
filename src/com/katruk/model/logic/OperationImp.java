@@ -9,12 +9,10 @@ import java.util.List;
 
 public class OperationImp implements Operation, KeyChar {
 
-
-
     @Override
     public List<String> getAllWord(Data book){
         checkNull(book);
-        List<String> strings = new ArrayList<String>();
+        List<String> strings = new ArrayList<>();
 
         List<Data> texts = book.getListData();
         for (Data text : texts) {
@@ -39,13 +37,8 @@ public class OperationImp implements Operation, KeyChar {
     public String sortWord(List<String> strings){
         if (strings == null || strings.size() == 0) throw new IllegalArgumentException("Input wrong string");
 
-        Collections.sort(strings, new Comparator<String>() {
-                    @Override
-                    public int compare(String o1, String o2) {
-                        return Character.compare(Character.toUpperCase(o1.charAt(0)),
-                                                 Character.toUpperCase(o2.charAt(0)));
-                    }
-                }
+        Collections.sort(strings, (o1, o2) -> Character.compare(Character.toUpperCase(o1.charAt(0)),
+                                 Character.toUpperCase(o2.charAt(0)))
         );
 
         Character firstChar = Character.toUpperCase(strings.get(0).charAt(0));

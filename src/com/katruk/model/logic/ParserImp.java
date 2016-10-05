@@ -10,7 +10,7 @@ public class ParserImp implements Parser, KeyChar, KeyWord {
 	@Override
 	public Data parserAll(String string){
 		checkNull(string);
-		Data book = Factory.Instance().create(TypeData.BOOK);
+		Data book = Factory.getInstance().create(TypeData.BOOK);
 		book.setListData(makeBook(string));
 		return book;
 	}
@@ -23,16 +23,16 @@ public class ParserImp implements Parser, KeyChar, KeyWord {
 	private List<Data> makeBook(String string){
 		String[] strings = makeParagraph(string);
 
-		List<Data> list = new ArrayList<Data>();
+		List<Data> list = new ArrayList<>();
 
 		for (int i = 0; i < strings.length; i++) {
 			strings[i] = makeOneSpace(strings[i]);
 			if (isCode(strings[i])) {
-				Data code = Factory.Instance().create(TypeData.CODE);
+				Data code = Factory.getInstance().create(TypeData.CODE);
 				code.setListData(stringToListSymbol(strings[i]));
 				list.add(code);
 			} else {
-				Data text = Factory.Instance().create(TypeData.TEXT);
+				Data text = Factory.getInstance().create(TypeData.TEXT);
 				text.setListData(makeText(strings[i]));
 				list.add(text);
 			}
@@ -81,7 +81,7 @@ public class ParserImp implements Parser, KeyChar, KeyWord {
 	 * @return			list of symbol
 	 */
 	private List<Data> stringToListSymbol(String string){
-		List<Data> symbolList = new ArrayList<Data>();
+		List<Data> symbolList = new ArrayList<>();
 
 		for (int i = 0; i < string.length(); i++){
 			Symbol symbol = FlyweightSymbol.Instance().create(string.charAt(i));
@@ -98,9 +98,9 @@ public class ParserImp implements Parser, KeyChar, KeyWord {
 	private List<Data> makeText(String string){
 
 		List<String> sentences = splitSentence(string);
-		List<Data> text = new ArrayList<Data>();
+		List<Data> text = new ArrayList<>();
 		for (String aSentence : sentences) {
-			Data sentence = Factory.Instance().create(TypeData.SENTENCE);
+			Data sentence = Factory.getInstance().create(TypeData.SENTENCE);
 			sentence.setListData(makeSentence(aSentence));
 			text.add(sentence);
 		}
@@ -113,7 +113,7 @@ public class ParserImp implements Parser, KeyChar, KeyWord {
 	 * @return			list of text
 	 */
 	private List<String> splitSentence(final String string){
-		return new ArrayList<String>(Arrays.asList(string.split(SENTENCE_END)));
+		return new ArrayList<>(Arrays.asList(string.split(SENTENCE_END)));
 	}
 
 	/**
@@ -125,12 +125,12 @@ public class ParserImp implements Parser, KeyChar, KeyWord {
 		String[] words = string.split(WORD_END);
 		String[] marks = string.split(FOR_WORD);
 
-		List<Data> sentences = new ArrayList<Data>();
+		List<Data> sentences = new ArrayList<>();
 		for (int i = 0; i < words.length; i++) {
-			Data word = FlyweightWordMark.Instance().create(TypeData.WORD, words[i]);
+			Data word = FlyweightWordMark.getInstance().create(TypeData.WORD, words[i]);
 			sentences.add(word);
 
-			Data mark = FlyweightWordMark.Instance().create(TypeData.MARK, marks[i]);
+			Data mark = FlyweightWordMark.getInstance().create(TypeData.MARK, marks[i]);
 			sentences.add(mark);
 		}
 	return sentences;

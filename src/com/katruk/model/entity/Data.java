@@ -36,6 +36,7 @@ public class Data {
 		for (Data abstractData: listData) {
 			string.append(abstractData);
 		}
-		return String.valueOf(string);
+		return string.toString();
+		//return String.valueOf(string);
 	}
 }

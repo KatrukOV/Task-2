@@ -3,17 +3,12 @@ package com.katruk;
 import com.katruk.controller.EncodingText;
 import com.katruk.controller.Controller;
 import com.katruk.model.entity.Data;
-import com.katruk.model.logic.Operation;
-import com.katruk.model.logic.OperationImp;
-import com.katruk.model.logic.Parser;
-import com.katruk.model.logic.ParserImp;
+import com.katruk.model.logic.*;
 import com.katruk.veiw.Renderer;
 import java.io.IOException;
 import java.util.List;
 
-public class Main {
-	public static final String PATH_INPUT = "c:\\GitHub\\Task-2\\Input.txt";
-	public static final String PATH_OUTPUT = "c:\\GitHub\\Task-2\\Output.txt";
+public class Main implements Path {
 
 	public static void main(String[] args) throws IOException {
 
@@ -45,6 +40,5 @@ public class Main {
 		string = words.toString();
 
 		controller.writeFile(PATH_OUTPUT, EncodingText.Utf8, string);
-
 	}
 }

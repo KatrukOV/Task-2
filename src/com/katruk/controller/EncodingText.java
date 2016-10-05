@@ -6,6 +6,10 @@ public enum EncodingText {
 
     String name;
 
+    /**
+     * Constructor
+     * @param name   the name of the encoding
+     */
     EncodingText(String name) {
         this.name = name;
     }
@@ -14,5 +18,4 @@ public enum EncodingText {
     public String toString() {
         return name;
     }
-
 }

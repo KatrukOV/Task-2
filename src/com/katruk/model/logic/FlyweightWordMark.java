@@ -12,12 +12,12 @@ import java.util.Map;
 /**
  * This class is using pattern FLYWEIGHT for the creating words
  */
-public class FlyweightWordMark {
+class FlyweightWordMark {
 
 	/**
 	 * private instance of class
 	 */
-	private static FlyweightWordMark flyweight;
+	private static FlyweightWordMark flyweight = new FlyweightWordMark();
 
 	/**
 	 * Map of unique words
@@ -35,9 +35,8 @@ public class FlyweightWordMark {
 	 * get instance
 	 * @return	factory
 	 */
-	public static FlyweightWordMark Instance(){
-		if (flyweight != null) return flyweight;
-		else return new FlyweightWordMark();
+	public static FlyweightWordMark getInstance(){
+		return flyweight;
 	}
 
 	/**
@@ -46,25 +45,26 @@ public class FlyweightWordMark {
 	 * @param input		input string
 	 * @return			data
 	 */
-	public Data create(TypeData type, String input) {
+	public Data create(TypeData type, String input){
 
 		if(cacheWordMark.containsKey(input)){
 			return cacheWordMark.get(input);
 		} else {
-			Data data = Factory.Instance().create(type);
+			Data data = Factory.getInstance().create(type);
 			data.setListData(stringToListSymbol(input));
 			cacheWordMark.put(input, data);
 			return data;
 		}
 	}
 
+	//todo: in this place?
 	/**
 	 * conversion string to list of data
 	 * @param string		input string
 	 * @return				list of data
 	 */
 	private List<Data> stringToListSymbol(String string){
-		List<Data> symbolList = new ArrayList<Data>();
+		List<Data> symbolList = new ArrayList<>();
 
 		for (int i = 0; i < string.length(); i++) {
 			Symbol symbol = FlyweightSymbol.Instance().create(string.charAt(i));

@@ -3,11 +3,12 @@ package com.katruk.model.logic;
 import com.katruk.model.entity.*;
 import com.katruk.model.entity.TypeData;
 
-public class Factory {
+class Factory {
+
 	/**
 	 * private instance of class
 	 */
-	private static Factory factory;
+	private static Factory factory = new Factory();
 
 	/**
 	 * default private constructor
@@ -18,9 +19,8 @@ public class Factory {
 	 * get instance
 	 * @return	factory
 	 */
-	public static Factory Instance(){
-		if (factory != null) return factory;
-		else return new Factory();
+	public static Factory getInstance(){
+		 return factory;
 	}
 
 	/**
@@ -32,14 +32,11 @@ public class Factory {
 		Data data;
 
 		switch (type) {
-			case SYMBOL:{
-				data = new Symbol(); break;
-			}
-			default:
-				data = new Data();
+			case SYMBOL:{ data = new Symbol(); break;}
+			default:      data = new Data();
 		}
+
 		data.setTypeData(type);
 		return data;
-
 	}
 }
