@@ -28,6 +28,9 @@ $RECYCLE.BIN/
 .AppleDouble
 .LSOverride
 
+# Idea
+.idea
+
 # Thumbnails
 ._*
 

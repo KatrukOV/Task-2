@@ -4,39 +4,39 @@ import java.util.List;
 
 public class Data {
 
-	/**
-	 * list of abstract data
-	 */
-	protected List<Data> listData;
+  /**
+   * list of abstract data
+   */
+  protected List<Data> listData;
 
-	/**
-	 * type of data
-	 */
-	protected TypeData typeData;
+  /**
+   * type of data
+   */
+  protected TypeData typeData;
 
-	public List<Data> getListData() {
-		return listData;
-	}
+  public List<Data> getListData() {
+    return listData;
+  }
 
-	public void setListData(List<Data> listData) {
-		this.listData = listData;
-	}
+  public void setListData(List<Data> listData) {
+    this.listData = listData;
+  }
 
-	public TypeData getTypeData() {
-		return typeData;
-	}
+  public TypeData getTypeData() {
+    return typeData;
+  }
 
-	public void setTypeData(TypeData typeData) {
-		this.typeData = typeData;
-	}
+  public void setTypeData(TypeData typeData) {
+    this.typeData = typeData;
+  }
 
-	@Override
-	public String toString() {
-		StringBuilder string = new StringBuilder();
-		for (Data abstractData: listData) {
-			string.append(abstractData);
-		}
-		return string.toString();
-		//return String.valueOf(string);
-	}
+  @Override
+  public String toString() {
+    StringBuilder string = new StringBuilder();
+    for (Data abstractData : listData) {
+      string.append(abstractData);
+    }
+    return string.toString();
+    //return String.valueOf(string);
+  }
 }
