@@ -1,45 +1,50 @@
 package com.katruk.model.logic;
 
-import com.katruk.model.entity.*;
+import com.katruk.model.entity.Data;
+import com.katruk.model.entity.Symbol;
 import com.katruk.model.entity.TypeData;
 
-public class Factory {
-	/**
-	 * private instance of class
-	 */
-	private static Factory factory;
+class Factory {
 
-	/**
-	 * default private constructor
-	 */
-	private Factory(){}
+  /**
+   * private instance of class
+   */
+  private static Factory factory = new Factory();
 
-	/**
-	 * get instance
-	 * @return	factory
-	 */
-	public static Factory Instance(){
-		if (factory != null) return factory;
-		else return new Factory();
-	}
+  /**
+   * default private constructor
+   */
+  private Factory() {
+  }
 
-	/**
-	 * create element of data
-	 * @param type	type of data
-	 * @return		data
-	 */
-	public Data create(TypeData type){
-		Data data;
+  /**
+   * get instance
+   *
+   * @return factory
+   */
+  public static Factory getInstance() {
+    return factory;
+  }
 
-		switch (type) {
-			case SYMBOL:{
-				data = new Symbol(); break;
-			}
-			default:
-				data = new Data();
-		}
-		data.setTypeData(type);
-		return data;
+  /**
+   * create element of data
+   *
+   * @param type type of data
+   * @return data
+   */
+  public Data create(TypeData type) {
+    Data data;
 
-	}
+    switch (type) {
+      case SYMBOL: {
+        data = new Symbol();
+        break;
+      }
+      default:
+        data = new Data();
+    }
+
+    data.setTypeData(type);
+    return data;
+  }
 }

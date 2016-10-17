@@ -12,64 +12,68 @@ import java.util.Map;
 /**
  * This class is using pattern FLYWEIGHT for the creating words
  */
-public class FlyweightWordMark {
+class FlyweightWordMark {
 
-	/**
-	 * private instance of class
-	 */
-	private static FlyweightWordMark flyweight;
+  /**
+   * private instance of class
+   */
+  private static FlyweightWordMark flyweight = new FlyweightWordMark();
 
-	/**
-	 * Map of unique words
-	 */
-	private Map<String, Data> cacheWordMark;
+  /**
+   * Map of unique words
+   */
+  private Map<String, Data> cacheWordMark;
 
-	/**
-	 * Default private constructor
-	 */
-	private FlyweightWordMark() {
-		this.cacheWordMark = new HashMap<>();
-	}
+  /**
+   * Default private constructor
+   */
+  private FlyweightWordMark() {
+    this.cacheWordMark = new HashMap<>();
+  }
 
-	/**
-	 * get instance
-	 * @return	factory
-	 */
-	public static FlyweightWordMark Instance(){
-		if (flyweight != null) return flyweight;
-		else return new FlyweightWordMark();
-	}
+  /**
+   * get instance
+   *
+   * @return factory
+   */
+  public static FlyweightWordMark getInstance() {
+    return flyweight;
+  }
 
-	/**
-	 * creates or return from list of cache Word or Mark
-	 * @param type		type of Text
-	 * @param input		input string
-	 * @return			data
-	 */
-	public Data create(TypeData type, String input) {
+  /**
+   * creates or return from list of cache Word or Mark
+   *
+   * @param type  type of Text
+   * @param input input string
+   * @return data
+   */
+  public Data create(TypeData type, String input) {
 
-		if(cacheWordMark.containsKey(input)){
-			return cacheWordMark.get(input);
-		} else {
-			Data data = Factory.Instance().create(type);
-			data.setListData(stringToListSymbol(input));
-			cacheWordMark.put(input, data);
-			return data;
-		}
-	}
+    if (cacheWordMark.containsKey(input)) {
+      return cacheWordMark.get(input);
+    } else {
+      Data data = Factory.getInstance().create(type);
+      data.setListData(stringToListSymbol(input));
+      cacheWordMark.put(input, data);
+      return data;
+    }
+  }
 
-	/**
-	 * conversion string to list of data
-	 * @param string		input string
-	 * @return				list of data
-	 */
-	private List<Data> stringToListSymbol(String string){
-		List<Data> symbolList = new ArrayList<Data>();
+  //todo: in this place?
 
-		for (int i = 0; i < string.length(); i++) {
-			Symbol symbol = FlyweightSymbol.Instance().create(string.charAt(i));
-			symbolList.add(symbol);
-		}
-		return symbolList;
-	}
+  /**
+   * conversion string to list of data
+   *
+   * @param string input string
+   * @return list of data
+   */
+  private List<Data> stringToListSymbol(String string) {
+    List<Data> symbolList = new ArrayList<>();
+
+    for (int i = 0; i < string.length(); i++) {
+      Symbol symbol = FlyweightSymbol.Instance().create(string.charAt(i));
+      symbolList.add(symbol);
+    }
+    return symbolList;
+  }
 }
