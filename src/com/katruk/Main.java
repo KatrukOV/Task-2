@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class Main {
-	public static final String PATH_INPUT = "c:\\GitHub\\Task-2\\Input.txt";
-	public static final String PATH_OUTPUT = "c:\\GitHub\\Task-2\\Output.txt";
+	public static final String PATH_INPUT = "Input.txt";
+	public static final String PATH_OUTPUT = "Output.txt";
 
 	public static void main(String[] args) throws IOException {
 
