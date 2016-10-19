@@ -1,10 +1,8 @@
-# Task-2
+  Create a program for word processing textbook on programming using classes:
+  Symbol, Word, Sentence, Punctuation and others.
+  Replace the tab and the sequence of spaces with a single space.
 
-  Создать программу обработки текста учебника по программированию с использованием классов: 
-  Символ, Слово, Предложение, Знак препинания и др. Во всех задачах с формированием текста 
-  заменять табуляции и последовательности пробелов одним пробелом.
-  
-  Напечатать слова текста в алфавитном порядке по первой букве. 
-  Слова, начинающиеся с новой буквы, печатать с красной строки.
+  Print the words of the text in alphabetical order by first letter.
+  Words starting with new letters printed with a new line.
   
   
